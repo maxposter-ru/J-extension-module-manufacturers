@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<extension type="module" version="1.6" client="site" method="upgrade">
+    <name>mod_maxposter_manufacturers</name>
+    <author>Святослав Астахов</author>
+    <creationDate>2012-02-02</creationDate>
+    <copyright>Copyright (C) 2010 - 2012 Maxposter.ru. All rights reserved.</copyright>
+    <license>GNU/GPL</license>
+    <version>17.0.1</version>
+    <authorEmail>astahov@maxposter.ru</authorEmail>
+    <authorUrl>http://maxposter.ru</authorUrl>
+    <releaseDate>2012-02-03</releaseDate>
+    <releaseType>Beta</releaseType>
+    <downloadUrl>http://maxposter.ru</downloadUrl>
+    <description>MOD_MAXPOSTER_MANUFACTURERS_XML_DESCRIPTION</description>
+
+    <files>
+        <filename module="mod_maxposter_manufacturers">mod_maxposter_manufacturers.php</filename>
+        <filename>index.html</filename>
+        <filename>helper.php</filename>
+        <folder>tmpl</folder>
+    </files>
+    <!-- FIXME: there is a problem with uninstaller - it removes media/maxposter directory -->
+    <media destination="maxposter" folder="media">
+        <folder>css</folder>
+        <folder>js</folder>
+    </media>
+
+    <languages folder="language">
+        <language tag="ru-RU">ru-RU.mod_maxposter_manufacturers.ini</language>
+        <language tag="ru-RU">ru-RU.mod_maxposter_manufacturers.sys.ini</language>
+    </languages>
+
+    <help key="JHELP_EXTENSIONS_MODULE_MANAGER_MAXPOSTER_MANUFACTURERS" />
+
+    <dependencies>
+        <dependency type="component" name="com_maxposter" operator=">=" version="17.0.2.2" />
+    </dependencies>
+
+    <updateservers>
+        <server type="collection" priority="1" name="MaxPoster on GitHub">http://maxposter-ru.github.com/J-extensions/list.xml</server>
+        <server type="extension" priority="2" name="MaxPoster on GitHub module">http://maxposter-ru.github.com/J-extensions/module_manufacturers.xml</server>
+        <server type="collection" priority="1" name="MaxPoster on BitBucket">https://bitbucket.org/maxposter/jextensions/raw/gh-pages/list.xml</server>
+        <server type="extension" priority="2" name="MaxPoster on BitBucket module">https://bitbucket.org/maxposter/jextensions/raw/gh-pages/module_manufacturers.xml</server>
+    </updateservers>
+
+    <config>
+        <fields name="params">
+            <fieldset name="basic">
+                <field name="enable_js" default="0" type="radio" label="MOD_MAXPOSTER_MANUFACTURERS_BASIC_ENABLE_JS_LABEL" description="MOD_MAXPOSTER_MANUFACTURERS_BASIC_ENABLE_JS_DESC">
+                    <option value="0">JNO</option>
+                    <option value="1">JYES</option>
+                </field>
+            </fieldset>
+            <fieldset
+                name="advanced">
+                <field
+                    name="layout"
+                    type="modulelayout"
+                    label="JFIELD_ALT_LAYOUT_LABEL"
+                    description="JFIELD_ALT_MODULE_LAYOUT_DESC" />
+                <field
+                    name="moduleclass_sfx"
+                    type="text"
+                    label="COM_MODULES_FIELD_MODULECLASS_SFX_LABEL"
+                    description="COM_MODULES_FIELD_MODULECLASS_SFX_DESC" />
+                <field
+                    name="cache"
+                    type="list"
+                    default="1"
+                    label="COM_MODULES_FIELD_CACHING_LABEL"
+                    description="COM_MODULES_FIELD_CACHING_DESC">
+                    <option
+                        value="1">JGLOBAL_USE_GLOBAL</option>
+                    <option
+                        value="0">COM_MODULES_FIELD_VALUE_NOCACHING</option>
+                </field>
+            </fieldset>
+        </fields>
+    </config>
+</extension>
