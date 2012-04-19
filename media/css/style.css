@@ -1,0 +1,23 @@
+.mod-maxposter-manufacturers-list {
+    overflow:hidden;
+    }
+    .mod-maxposter-manufacturers-list ul {
+        margin:0;
+        padding:0;
+        list-style:none;
+        }
+    .mod-maxposter-manufacturers-list > ul > li {
+        position:relative;
+        }
+        .mod-maxposter-manufacturers-list li ul > li {
+            position:static;
+            }
+    /* used together with JS */
+    .mod-maxposter-manufacturers-list li > .toggler {
+        position:absolute;
+        left:0;
+        top:0;
+        width:1.4em;
+        height:1.4em;
+        background:transparent url('/media/maxposter/mod_manufacturers/images/expand.png') no-repeat center center;
+        }

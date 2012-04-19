@@ -5,13 +5,15 @@
     <creationDate>2012-02-02</creationDate>
     <copyright>Copyright (C) 2010 - 2012 Maxposter.ru. All rights reserved.</copyright>
     <license>GNU/GPL</license>
-    <version>17.0.1</version>
+    <version>17.0.1.1</version>
     <authorEmail>astahov@maxposter.ru</authorEmail>
     <authorUrl>http://maxposter.ru</authorUrl>
-    <releaseDate>2012-02-03</releaseDate>
+    <releaseDate>2012-04-20</releaseDate>
     <releaseType>Beta</releaseType>
     <downloadUrl>http://maxposter.ru</downloadUrl>
     <description>MOD_MAXPOSTER_MANUFACTURERS_XML_DESCRIPTION</description>
+
+    <scriptfile>updater.php</scriptfile>
 
     <files>
         <filename module="mod_maxposter_manufacturers">mod_maxposter_manufacturers.php</filename>
@@ -19,10 +21,12 @@
         <filename>helper.php</filename>
         <folder>tmpl</folder>
     </files>
-    <!-- FIXME: there is a problem with uninstaller - it removes media/maxposter directory -->
-    <media destination="maxposter" folder="media">
+
+    <media destination="maxposter/mod_manufacturers" folder="media">
+        <filename>index.html</filename>
         <folder>css</folder>
         <folder>js</folder>
+        <folder>images</folder>
     </media>
 
     <languages folder="language">

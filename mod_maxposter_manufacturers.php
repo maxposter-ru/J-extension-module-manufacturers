@@ -46,14 +46,14 @@ require_once (JPATH_SITE.'/components/com_maxposter/helpers/helper.php');
 
 # Styles
 # base
-JHtml::stylesheet('maxposter/mod_maxposter_manufacturers.css', array(), true, false, false);
+JHtml::stylesheet('maxposter/mod_manufacturers/style.css', array(), true, false, false);
 # client overrides
 JHtml::stylesheet('mod_maxposter_manufacturers.css', array(), true);
 
 # JS
 if ($params->get('enable_js', false)) {
     # base
-    JHtml::script('maxposter/mod_maxposter_manufacturers.js', false, true, false, false);
+    JHtml::script('maxposter/mod_manufacturers/script.js', false, true, false, false);
     # client overrides
     JHtml::script('mod_maxposter_manufacturers.js', false, true);
 }
