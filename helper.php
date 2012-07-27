@@ -116,7 +116,7 @@ class modMaxPosterManufacturerHelper
      * @param  string  $type
      * @return string
      */
-    public function getList($type = 'ul')
+    public function getList($type = 'ul', $withModels = true)
     {
         $xmlMarks = $this->xpath->query('/response/marks/mark');
         $link = $this->buildInternalLink();
@@ -128,21 +128,23 @@ class modMaxPosterManufacturerHelper
             $markHref = sprintf('%s&%ssearch[mark_id]=%d', $link, $searchPrefix, (int) $mark->getAttribute('mark_id'));
             // models
             $models = '';
-            foreach ($this->xpath->query('./models/model', $mark) as $model) {
-                $modelHref = sprintf('%s&%ssearch[model_id]=%d', $markHref, $searchPrefix, (int) $model->getAttribute('model_id'));
-                $modelName = $this->xpath->query('./name', $model)->item(0);
-                $modelLink = $this->contentTag('a', $modelName->nodeValue, array('href' => JRoute::_($modelHref)));
-                $models .= $this->contentTag('li', $modelLink, array(
-                    'class' => sprintf('mod-maxposter-manufacturers-model-%d', (int) $model->getAttribute('model_id'))
-                            . (
-                                (!empty($this->search['model_id']) && ($this->search['model_id'] == (int) $model->getAttribute('model_id')))
-                                ? ' current' : ''
-                            ),
-                ));
+            if ($withModels) {
+                foreach ($this->xpath->query('./models/model', $mark) as $model) {
+                    $modelHref = sprintf('%s&%ssearch[model_id]=%d', $markHref, $searchPrefix, (int) $model->getAttribute('model_id'));
+                    $modelName = $this->xpath->query('./name', $model)->item(0);
+                    $modelLink = $this->contentTag('a', $modelName->nodeValue, array('href' => JRoute::_($modelHref)));
+                    $models .= $this->contentTag('li', $modelLink, array(
+                        'class' => sprintf('mod-maxposter-manufacturers-model-%d', (int) $model->getAttribute('model_id'))
+                                . (
+                                    (!empty($this->search['model_id']) && ($this->search['model_id'] == (int) $model->getAttribute('model_id')))
+                                    ? ' current' : ''
+                                ),
+                    ));
+                }
+                unset($modelHref, $modelLink);
+                $models = $models ? $this->contentTag('ul', $models, array()) : '';
+                //
             }
-            unset($modelHref, $modelLink);
-            $models = $models ? $this->contentTag('ul', $models, array()) : '';
-            //
             $markName = $this->xpath->query('./name', $mark)->item(0);
             $markLink = $this->contentTag('a', $markName->nodeValue, array('href' => JRoute::_($markHref)));
             $output .= $this->contentTag('li', $markLink . $models, array(
